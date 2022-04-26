@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="title">
+        <!-- Title -->
+        <span>Convert Numbers To Text</span>
+    </div>
+    <div>
+        <!-- Number input -->
+        <input id="numberInput" type="number" onkeyup="onKeyUp(this)" placeholder="Add number to convert here" min=0 max=9007199254740991 style="min-width: 200px;" />
+    </div>
+    <div class="output-section">
+        <!-- Text Number Output -->
+        <span id="convertedNumber"></span>
+    </div>
+    <script type="text/javascript" src="number-to-text.js"></script>
+    <script type="text/javascript">
+        function onKeyUp(element) {
+            let value = Number(element.value);
+            let max = Number(element.max);
+            let min = Number(element.min);
+            if (value > max) {
+                element.value = element.max;
+            }
+            else if (value < min) {
+                element.value = element.min;
+            }
+            printNumberText();
+        }
+
+        function printNumberText() {
+            let input = document.getElementById("numberInput");
+            let output = document.getElementById("convertedNumber");
+            let number = Number(input.value);
+            if (number) {
+                output.innerText = numberToText(number);
+            }
+            else if (input.value === "") {
+                output.innerText = "";
+            }
+            else {
+                output.innerText = "Not a valid entry";
+            }
+        }
+    </script>
+</body>
+</html>
